@@ -16,10 +16,15 @@
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "^3.6"
     },
+    "autoload-dev": {
+        "psr-4": {
+            "GroupLife\\API\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "test": ["phpunit", "@composer style"],
-        "style": "phpcs --standard=PSR12 src/ tests/",
-        "style-fix": "phpcbf --standard=PSR12 src/ tests/",
+        "style": "phpcs --standard=PSR12 public/ tests/ routes/ config/",
+        "style-fix": "phpcbf --standard=PSR12 public/ tests/ routes/ config/",
         "start": "php -S localhost:8080 -t public public/index.php"
     }
 }

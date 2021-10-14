@@ -14,7 +14,7 @@
         <ini name="date.timezone" value="Europe/Berlin"/>
     </php>
     <testsuites>
-        <testsuite name="Main Test Suite">
+        <testsuite name="API Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
