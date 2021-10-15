@@ -18,13 +18,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GroupLife\\API\\Tests\\": "tests/"
+            "GroupLife\\Api\\Test\\": "tests/lib/"
         }
     },
     "scripts": {
         "test": ["phpunit", "@composer style"],
-        "style": "phpcs --standard=PSR12 public/ tests/ routes/ config/",
-        "style-fix": "phpcbf --standard=PSR12 public/ tests/ routes/ config/",
+        "style": "phpcs --standard=PSR12 public/ src/",
+        "style-fix": "phpcbf --standard=PSR12 public/ src/",
         "start": "php -S localhost:8080 -t public public/index.php"
     }
 }
