@@ -28,7 +28,7 @@
         "psr-4": {
             "GroupLife\\Api\\Database\\": "database/"
         },
-        "files": ["settings.php"]
+        "files": ["./src/database.php"]
     },
     "scripts": {
         "test": ["@create-db", "phpunit", "@composer style"],
