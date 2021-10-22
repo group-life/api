@@ -6,13 +6,14 @@ namespace GroupLife\Api\Tests\integration;
 
 use PHPUnit\Framework\TestCase;
 
+use function GroupLife\Api\database;
+
 class DBConnectionTest extends TestCase
 {
     public function testConnectionToDB(): void
     {
         $db = database();
         self::assertEquals('test.db', basename($db->getDatabase()));
-
     }
 
     /**
