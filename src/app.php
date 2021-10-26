@@ -1,14 +1,20 @@
 <?php
 
+use GroupLife\Api\Controller\TestController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
 
-$app = AppFactory::create();
+$app = \DI\Bridge\Slim\Bridge::create(require realpath(__DIR__ . '/../config/container.php'));
 
-$app->get('/', function (Request $request, Response $response, $args) {
+$app->addRoutingMiddleware();
+
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
+$app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write("Hello world!");
     return $response;
 });
+
+$app->get('/test', [TestController::class, 'test']);
 
 return $app;
