@@ -15,7 +15,7 @@ class TestController
 
     public function test($response)
     {
-        $this->connection->insert('visitor', ['name'=> 'Test', 'surname' => 'Test']);
+        $this->connection->insert('visitor', ['name' => 'Test', 'surname' => 'Test']);
         $response->getBody()->write('Test passed');
         return $response;
     }
