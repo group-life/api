@@ -29,9 +29,7 @@
     },
     "autoload": {
         "files": ["./src/functions/database.php"],
-        "psr-4": {
-            "GroupLife\\Api\\": "./src/"
-        }
+        "psr-4": {"GroupLife\\Api\\":"src/"}
     },
     "scripts": {
         "test": ["@create-db", "phpunit", "@composer style"],

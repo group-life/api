@@ -1,6 +1,6 @@
 <?php
 
-namespace GroupLife\Api\Controller;
+namespace GroupLife\Api\Tests\integration\Controller;
 
 use GroupLife\Api\Test\ApplicationTestCase;
 use function GroupLife\Api\database;
