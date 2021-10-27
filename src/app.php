@@ -1,11 +1,14 @@
 <?php
 
+use GroupLife\Api\Controller\LeaderController;
 use GroupLife\Api\Controller\TestController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
-$app = \DI\Bridge\Slim\Bridge::create(require realpath(__DIR__ . '/../config/container.php'));
+AppFactory::setContainer(require realpath(__DIR__ . '/../config/container.php'));
 
+$app = AppFactory::create();
 $app->addRoutingMiddleware();
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
@@ -16,5 +19,9 @@ $app->get('/', function (Request $request, Response $response) {
 });
 
 $app->get('/test', [TestController::class, 'test']);
+
+$app->get('/leaders/{id}', [LeaderController::class, 'get']);
+
+$app->post('/leaders/new', [LeaderController::class, 'post']);
 
 return $app;
