@@ -22,6 +22,6 @@ $app->get('/test', [TestController::class, 'test']);
 
 $app->get('/leaders/{id}', [LeaderController::class, 'get']);
 
-$app->post('/leaders/new', [LeaderController::class, 'post']);
+$app->post('/leaders', [LeaderController::class, 'post']);
 
 return $app;
