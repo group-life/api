@@ -2,19 +2,17 @@
 
 namespace GroupLife\Api\Controller;
 
-use Doctrine\DBAL\Connection;
 use GroupLife\Core\DataMapper\LeaderMapper;
 use GroupLife\Core\Leader;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-class LeaderController extends Controller
+class LeaderController
 {
     private $leaderMapper;
 
-    public function __construct(Connection $connection, LeaderMapper $leaderMapper)
+    public function __construct(LeaderMapper $leaderMapper)
     {
-        parent::__construct($connection);
         $this->leaderMapper = $leaderMapper;
     }
 
