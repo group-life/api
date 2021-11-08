@@ -26,6 +26,7 @@ abstract class ApplicationTestCase extends TestCase
     /**
      * @param string $method
      * @param string $path
+     * @param string $body
      * @param string $query
      * @param array $headers
      * @param array $cookies
@@ -35,6 +36,7 @@ abstract class ApplicationTestCase extends TestCase
     protected function createRequest(
         string $method,
         string $path,
+        string $body = '',
         string $query = '',
         array $headers = [],
         array $cookies = [],
@@ -42,8 +44,7 @@ abstract class ApplicationTestCase extends TestCase
     ): Request {
         $uri = new Uri('', '', 80, $path, $query);
 
-        $handle = fopen('php://temp', 'w+b');
-        $stream = (new StreamFactory())->createStreamFromResource($handle);
+        $stream = (new StreamFactory())->createStream($body);
 
         $h = new Headers();
         foreach ($headers as $name => $value) {
@@ -52,5 +53,4 @@ abstract class ApplicationTestCase extends TestCase
 
         return new Request($method, $uri, $h, $cookies, $serverParams, $stream);
     }
-
 }

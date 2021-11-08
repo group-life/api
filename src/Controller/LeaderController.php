@@ -31,7 +31,28 @@ class LeaderController
         $leader = new Leader($name, $surname);
         $this->leaderMapper->insert($leader);
         $response->getBody()->write(
-            'New leader ' . $name . ' ' . $surname . ' has added with id - ' . getDataObject($leader)->id
+            'New leader ' . $name . ' ' . $surname . ' has been added with id - ' . getDataObject($leader)->id
+        );
+        return $response;
+    }
+    public function put(Request $request, Response $response)
+    {
+        $id = $request->getAttribute('id');
+        $name = $request->getParsedBody()['name'];
+        $surname = $request->getParsedBody()['surname'];
+        $leader = new Leader($name, $surname);
+        $this->leaderMapper->update($leader, (int)$id);
+        $response->getBody()->write(
+            'Leader ' . $name . ' ' . $surname . ' with id - ' . $id . ' has been updated'
+        );
+        return $response;
+    }
+    public function delete(Request $request, Response $response)
+    {
+        $id = $request->getAttribute('id');
+        $this->leaderMapper->delete((int) $id);
+        $response->getBody()->write(
+            'Leader with id - ' . $id . ' has been deleted'
         );
         return $response;
     }
